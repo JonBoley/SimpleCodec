@@ -11,33 +11,33 @@ A perceptual audio coder was written for Matlab which applies simple masking cur
 
 [Introduction](#introduction)
 
-    [Audio Coding](#audio-coding)
+- [Audio Coding](#audio-coding)
 
-    [Masking](#masking)
+- [Masking](#masking)
 
 [Design](#design)
 
-    [Frames](#frames)
+- [Frames](#frames)
 
-    [Signal-to-Mask Ratio](#signal-to-mask-ratio)
+- [Signal-to-Mask Ratio](#signal-to-mask-ratio)
 
-    [Bit Allocation](#bit-allocation)
+- [Bit Allocation](#bit-allocation)
 
-    [Quantization](#quantization)
+- [Quantization](#quantization)
 
-    [Writing the file](#writing-the-file)
+- [Writing the file](#writing-the-file)
 
 [Subjective Testing](#subjective-testing)
 
-    [Subjective Difference Grade](#subjective-difference-grade)
+- [Subjective Difference Grade](#subjective-difference-grade)
 
-    [Comparison to LSE Coder](#comparison-to-lse-coder)
+- [Comparison to LSE Coder](#comparison-to-lse-coder)
 
 [Conclusions](#conclusions)
 
-    [Current Coder](#current-coder)
+- [Current Coder](#current-coder)
 
-    [Future Improvements](#future-improvements)
+- [Future Improvements](#future-improvements)
 
 [APPENDIX](#appendix)
 
