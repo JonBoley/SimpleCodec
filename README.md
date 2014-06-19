@@ -9,39 +9,23 @@ A perceptual audio coder was written for Matlab which applies simple masking cur
 
 ## Table of Contents
 
-[Introduction](#introduction)
-
-- [Audio Coding](#audio-coding)
-
-- [Masking](#masking)
-
-[Design](#design)
-
-- [Frames](#frames)
-
-- [Signal-to-Mask Ratio](#signal-to-mask-ratio)
-
-- [Bit Allocation](#bit-allocation)
-
-- [Quantization](#quantization)
-
-- [Writing the file](#writing-the-file)
-
-[Subjective Testing](#subjective-testing)
-
-- [Subjective Difference Grade](#subjective-difference-grade)
-
-- [Comparison to LSE Coder](#comparison-to-lse-coder)
-
-[Conclusions](#conclusions)
-
-- [Current Coder](#current-coder)
-
-- [Future Improvements](#future-improvements)
-
-[APPENDIX](#appendix)
-
-[RESOURCES](#resources)
+1. [Introduction](#introduction)
+ * [Audio Coding](#audio-coding)
+ * [Masking](#masking)
+2. [Design](#design)
+ * [Frames](#frames)
+ * [Signal-to-Mask Ratio](#signal-to-mask-ratio)
+ * [Bit Allocation](#bit-allocation)
+ * [Quantization](#quantization)
+ * [Writing the file](#writing-the-file)
+3. [Subjective Testing](#subjective-testing)
+ * [Subjective Difference Grade](#subjective-difference-grade)
+ * [Comparison to LSE Coder](#comparison-to-lse-coder)
+4. [Conclusions](#conclusions)
+ * [Current Coder](#current-coder)
+ * [Future Improvements](#future-improvements)
+5. [APPENDIX](#appendix)
+6. [RESOURCES](#resources)
 
 ## INTRODUCTION
 
