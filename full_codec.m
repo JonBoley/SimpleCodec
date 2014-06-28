@@ -40,9 +40,6 @@ N = 2048; % framelength
 [Y,Fs] = audioread(originalFile);
 Y = Y(:,1); % just use the first channel
 
-num_subbands = floor(fftbark(N/2,N/2,Fs))+1;
-bits_per_frame = floor(((bitrate/Fs)*(N/2)) - (scalebits*num_subbands));
-
 sig=sin(2*pi*1000*(1:N/2)/Fs);
 win=(0.5 - 0.5*cos((2*pi*((1:(N/2))-0.5))/(N/2))); 
 fftmax = max(abs(fft(sig.*win))); % defined as 96dB
@@ -58,6 +55,8 @@ fwrite(fid, bitrate, 'ubit18'); % Bit Rate
 fwrite(fid, scalebits, 'ubit4'); % Number of Scale Bits per Sub-Band
 fwrite(fid, length(frames(:,1)), 'ubit26'); % Number of frames
     
+numBands = floor(fftbark(N/2,N/2,Fs))+1;
+
 %   Computations    
 for frame_count=1:length(frames(:,1))
 
@@ -69,8 +68,8 @@ for frame_count=1:length(frames(:,1))
     fft_frame = fft(frames(frame_count,:));
 
     if fft_frame == zeros(1,N)
-        Gain = zeros(1,floor(fftbark(N/2,N/2,Fs))+1);
-        bit_alloc = zeros(1,floor(fftbark(N/2,N/2,Fs))+1);
+        Gain = zeros(1,numBands);
+        bit_alloc = zeros(1,numBands);
     else    
         len = length(fft_frame);
         peak_width = zeros(1,len);
@@ -107,12 +106,11 @@ for frame_count=1:length(frames(:,1))
         A = 3.64*(f_kHz).^(-0.8) - 6.5*exp(-0.6*(f_kHz - 3.3).^2) + (10^(-3))*(f_kHz).^4;
     
         % Masking Spectrum
-        doNewMethod = true;
-        big_mask = max(A,Schroeder(Fs,N,centers(1)*(Fs/2)/N,fft_spl(centers(1)),...
-            14.5+bark(centers(1)*(Fs/2)/N)));
-        for peak_count=2:length(centers)
-            big_mask = max(big_mask,Schroeder(Fs,N,centers(peak_count)*(Fs/2)/N,fft_spl(centers(peak_count)),...
-                14.5+bark(centers(peak_count)*(Fs/2)/N)));
+        big_mask = max(A,Schroeder(Fs,N,centers(1)*Fs/N,fft_spl(centers(1)),...
+            14.5+bark(centers(1)*Fs/N)));
+        for peak_count=2:sum(centers*Fs/N<=Fs/2)
+            big_mask = max(big_mask,Schroeder(Fs,N,centers(peak_count)*Fs/N,...
+                fft_spl(centers(peak_count)), 14.5+bark(centers(peak_count)*Fs/N)));
         end
 
         % Signal Spectrum - Masking Spectrum (with max of 0dB)
@@ -133,11 +131,11 @@ for frame_count=1:length(frames(:,1))
             semilogx(0:(Fs/2)/(N/2):Fs/2-1,New_FFT2);
             title('SMR');
             figure;
-            stem(allocate(New_FFT2,bits_per_frame,N,Fs));
+            stem(allocate(New_FFT2,bitrate,scalebits,N,Fs));
             title('Bits perceptually allocated');
         end
-    
-        bit_alloc = allocate(New_FFT2,bits_per_frame,N,Fs);
+        
+        bit_alloc = allocate(New_FFT2,bitrate,scalebits,N,Fs);
     
         [Gain,Data] = p_encode(mdct(frames(frame_count,:)),Fs,N,bit_alloc,scalebits);
     end % end of If-Else Statement        
@@ -146,7 +144,7 @@ for frame_count=1:length(frames(:,1))
     qbits = sprintf('ubit%i', scalebits);
     fwrite(fid, Gain, qbits);
     fwrite(fid, bit_alloc, 'ubit4');
-    for ii=1:25
+    for ii=1:numBands
         indices = find((floor(fftbark(1:N/2,N/2,Fs))+1)==ii);
         qbits = sprintf('ubit%i', bit_alloc(ii)); % bits(floor(fftbark(i,framelength/2,48000))+1)
         if bit_alloc(ii)>0
@@ -270,11 +268,17 @@ b = 13*atan(0.76*f/1000) + 3.5*atan((f/7500).^2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %        ALLOCATE           %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function x=allocate(y,b,N,Fs)
-% x=allocate(y,b,N)
+function x=allocate(y,bitrate,scalebits,N,Fs)
+% x=allocate(y,b,sb,N,Fs)
 % Allocates b bits to the 25 subbands
 % of y (a length N/2 MDCT, in dB SPL)
 
+% artifact reduction (reduce high frequency bands at low bitrates)
+numBandsToIgnore = 2*floor(128000/bitrate);
+
+num_subbands = floor(fftbark(N/2,N/2,Fs))+1;
+bits_per_frame = floor(((bitrate/Fs)*(N/2)) - (scalebits*num_subbands));
+        
 bits(floor(bark( (Fs/2)*(1:N/2)/(N/2) )) +1) = 0;
 
 for ii=1:N/2
@@ -283,6 +287,7 @@ end
 
 indices = find(bits(1:end) < 2);
 bits(indices(1:end)) = 0;
+bits(end-numBandsToIgnore:end) = 0; % artifact reduction
 
 % NEED TO CALCULATE SAMPLES PER SUBBAND
 n = 0:N/2-1;
@@ -296,8 +301,8 @@ for ii=1:N/2
     num_crit_band_samples(crit_band(ii)) = num_crit_band_samples(crit_band(ii)) + 1;
 end
 
-x=zeros(1,25);
-bitsleft=b;
+x = zeros(1,num_subbands);
+bitsleft = bits_per_frame;
 [~,ii]=max(bits);
 while bitsleft > num_crit_band_samples(ii)
     [~,ii]=max(bits);
