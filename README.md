@@ -14,10 +14,6 @@ Encoded Sounds: ([Click Here to Downloads These Sounds](http://www.perceptualent
 
 |Original|128kbps|64kbps|32kbps|
 |--------|-------|------|------|
-|[Flute](http://www.perceptualentropy.com/newsounds/fluteA.wav)|[Flute - Perceptual](http://www.perceptualentropy.com/newsounds/fluteB.wav)|[Flute - Perceptual](http://www.perceptualentropy.com/newsounds/fluteD.wav)|[Flute - Perceptual](http://www.perceptualentropy.com/newsounds/fluteF.wav)|
-||[Flute - Spectral Power](http://www.perceptualentropy.com/newsounds/fluteC.wav)|[Flute - Spectral Power](http://www.perceptualentropy.com/newsounds/fluteE.wav)|[Flute - Spectral Power](http://www.perceptualentropy.com/newsounds/fluteG.wav)|
-|[Drums](http://www.perceptualentropy.com/newsounds/drumsA.wav)|[Drums - Perceptual](http://www.perceptualentropy.com/newsounds/drumsB.wav)|[Drums - Perceptual](http://www.perceptualentropy.com/newsounds/drumsD.wav)|[Drums - Perceptual](http://www.perceptualentropy.com/newsounds/drumsF.wav)|
-||[Drums - Spectral Power](http://www.perceptualentropy.com/newsounds/drumsC.wav)|[Drums - Spectral Power](http://www.perceptualentropy.com/newsounds/drumsE.wav)|[Drums - Spectral Power](http://www.perceptualentropy.com/newsounds/drumsG.wav)|
-|[Speech](http://www.perceptualentropy.com/newsounds/speechA.wav)|[Drums - Perceptual](http://www.perceptualentropy.com/newsounds/drumsB.wav)|[Drums - Perceptual](http://www.perceptualentropy.com/newsounds/drumsD.wav)|[Drums - Perceptual](http://www.perceptualentropy.com/newsounds/drumsF.wav)|
-||[Speech - Spectral Power](http://www.perceptualentropy.com/newsounds/speechC.wav)|[Speech - Spectral Power](http://www.perceptualentropy.com/newsounds/speechE.wav)|[Speech - Spectral Power](http://www.perceptualentropy.com/newsounds/speechG.wav)|
-
+|[Flute](http://www.perceptualentropy.com/newsounds/fluteA.wav)|[Flute](http://www.perceptualentropy.com/newsounds/fluteB.wav)|[Flute](http://www.perceptualentropy.com/newsounds/fluteD.wav)|[Flute](http://www.perceptualentropy.com/newsounds/fluteF.wav)|
+|[Drums](http://www.perceptualentropy.com/newsounds/drumsA.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsB.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsD.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsF.wav)|
+|[Speech](http://www.perceptualentropy.com/newsounds/speechA.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsB.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsD.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsF.wav)|
