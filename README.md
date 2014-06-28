@@ -16,4 +16,4 @@ Encoded Sounds: ([Click Here to Downloads These Sounds](http://www.perceptualent
 |--------|-------|------|------|
 |[Flute](http://www.perceptualentropy.com/newsounds/fluteA.wav)|[Flute](http://www.perceptualentropy.com/newsounds/fluteB.wav)|[Flute](http://www.perceptualentropy.com/newsounds/fluteD.wav)|[Flute](http://www.perceptualentropy.com/newsounds/fluteF.wav)|
 |[Drums](http://www.perceptualentropy.com/newsounds/drumsA.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsB.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsD.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsF.wav)|
-|[Speech](http://www.perceptualentropy.com/newsounds/speechA.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsB.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsD.wav)|[Drums](http://www.perceptualentropy.com/newsounds/drumsF.wav)|
+|[Speech](http://www.perceptualentropy.com/newsounds/speechA.wav)|[Speech](http://www.perceptualentropy.com/newsounds/speechB.wav)|[Speech](http://www.perceptualentropy.com/newsounds/speechD.wav)|[Speech](http://www.perceptualentropy.com/newsounds/speechF.wav)|
