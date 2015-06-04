@@ -15,9 +15,9 @@ function decodedFile = full_codec(originalFile,bitrate,decodedFile,codedFile)
 %   See also AUDIOWRITE
 
 % Github location:
-%   https://github.com/Jon2980/SimpleCodec.git
+%   https://github.com/JonBoley/SimpleCodec.git
 % Bug reports:
-%   https://github.com/Jon2980/SimpleCodec/issues
+%   https://github.com/JonBoley/SimpleCodec/issues
 % 
 % Copyright 2002, Jon Boley (jdb@jboley.com)
 
